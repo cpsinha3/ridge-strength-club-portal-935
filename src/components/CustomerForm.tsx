@@ -147,7 +147,15 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="sales_point">Sales point</Label>
-          <Input id="sales_point" value={form.sales_point} onChange={(e) => set('sales_point', e.target.value)} placeholder="Ridge Main Branch" />
+          <Select value={form.sales_point} onValueChange={(value) => set('sales_point', value)}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select sales point" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="MAA SANTOSHI AUTOMOBILES">MAA SANTOSHI AUTOMOBILES</SelectItem>
+              <SelectItem value="ATIKSH BAJAJ">ATIKSH BAJAJ</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
