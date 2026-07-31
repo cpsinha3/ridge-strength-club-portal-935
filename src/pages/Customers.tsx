@@ -1,23 +1,21 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import db from '@/lib/shared/kliv-database.js';
 import { Customer, formatMoney } from '@/lib/customer-types';
-import CustomerForm from '@/components/CustomerForm';
 import CustomerCard from '@/components/CustomerCard';
 import StatCard from '@/components/StatCard';
 import EmptyState from '@/components/EmptyState';
 import { PageSkeleton } from '@/components/LoadingSkeleton';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 import { Plus, Search, Users, Receipt, Store } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Customers() {
+  const navigate = useNavigate();
   const [rows, setRows] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [open, setOpen] = useState(false);
-  const [editing, setEditing] = useState<Customer | null>(null);
 
   const fetchRows = useCallback(async () => {
     const data = await db.query('customers', { order: '_created_at.desc', limit: '500' });
@@ -27,38 +25,15 @@ export default function Customers() {
 
   useEffect(() => { fetchRows(); }, [fetchRows]);
 
-  const handleSubmit = async (c: Customer) => {
-    const payload = {
-      sfdc_id: (c.sfdc_id || '').trim().toUpperCase(),
-      name: c.name.trim(),
-      mobile: c.mobile.trim(),
-      address: c.address || '',
-      loan_id: c.loan_id.trim(),
-      emi_amount: Number(c.emi_amount || 0),
-      emi_tenure: Number(c.emi_tenure || 0),
-      starting_month: c.starting_month || '',
-      emi_end_month: c.emi_end_month || '',
-      sales_point: c.sales_point || '',
-      dob: c.dob || '',
-      notes: c.notes || '',
-    };
-    if (editing?._row_id) {
-      await db.update('customers', { _row_id: `eq.${editing._row_id}` }, payload);
-      toast.success('Customer updated');
-    } else {
-      await db.insert('customers', payload);
-      toast.success('Customer saved');
-    }
-    setOpen(false);
-    setEditing(null);
-    await fetchRows();
-  };
-
   const handleDelete = async (c: Customer) => {
     if (!confirm(`Delete ${c.name}?`)) return;
     await db.delete('customers', { _row_id: `eq.${c._row_id}` });
     toast.success('Customer deleted');
     await fetchRows();
+  };
+
+  const handleEdit = (c: Customer) => {
+    navigate(`/customer/${c._row_id}/edit`);
   };
 
   const q = search.toLowerCase().trim();
@@ -80,7 +55,7 @@ export default function Customers() {
           <h1 className="text-2xl font-bold tracking-tight">Customer Records</h1>
           <p className="text-sm text-muted-foreground">Loans, EMI plans and contact details</p>
         </div>
-        <Button onClick={() => { setEditing(null); setOpen(true); }}>
+        <Button onClick={() => navigate('/customer/add')}>
           <Plus className="w-4 h-4 mr-1.5" /> Add customer
         </Button>
       </div>
@@ -110,23 +85,10 @@ export default function Customers() {
       ) : (
         <div className="grid gap-3 lg:grid-cols-2">
           {filtered.map((c) => (
-            <CustomerCard key={c._row_id} customer={c} onEdit={(x) => { setEditing(x); setOpen(true); }} onDelete={handleDelete} />
+            <CustomerCard key={c._row_id} customer={c} onEdit={handleEdit} onDelete={handleDelete} />
           ))}
         </div>
       )}
-
-      <Dialog open={open} onOpenChange={(o) => { setOpen(o); if (!o) setEditing(null); }}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>{editing ? 'Edit customer' : 'Add customer'}</DialogTitle>
-          </DialogHeader>
-          <CustomerForm
-            initial={editing ?? undefined}
-            onSubmit={handleSubmit}
-            onCancel={() => { setOpen(false); setEditing(null); }}
-          />
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

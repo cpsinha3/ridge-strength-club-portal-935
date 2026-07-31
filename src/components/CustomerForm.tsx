@@ -9,9 +9,10 @@ interface Props {
   initial?: Customer;
   onSubmit: (c: Customer) => Promise<void>;
   onCancel: () => void;
+  loading?: boolean;
 }
 
-export default function CustomerForm({ initial, onSubmit, onCancel }: Props) {
+export default function CustomerForm({ initial, onSubmit, onCancel, loading = false }: Props) {
   const [form, setForm] = useState<Customer>(initial ?? emptyCustomer);
   const [saving, setSaving] = useState(false);
 
@@ -87,8 +88,8 @@ export default function CustomerForm({ initial, onSubmit, onCancel }: Props) {
       </div>
 
       <div className="flex justify-end gap-2 pt-2">
-        <Button type="button" variant="outline" onClick={onCancel}>Cancel</Button>
-        <Button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save customer'}</Button>
+        <Button type="button" variant="outline" onClick={onCancel} disabled={saving || loading}>Cancel</Button>
+        <Button type="submit" disabled={saving || loading}>{saving || loading ? 'Saving…' : 'Save customer'}</Button>
       </div>
     </form>
   );
