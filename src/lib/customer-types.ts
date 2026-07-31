@@ -13,6 +13,7 @@ export interface Customer {
   emi_end_month: string;
   sales_point: string;
   dob: string;
+  adhar_number: string;
   notes: string;
 }
 
@@ -30,6 +31,7 @@ export const emptyCustomer: Customer = {
   emi_end_month: '',
   sales_point: '',
   dob: '',
+  adhar_number: '',
   notes: '',
 };
 

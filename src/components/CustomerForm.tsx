@@ -59,6 +59,10 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Label htmlFor="dob">Date of birth</Label>
           <Input id="dob" type="date" value={form.dob} onChange={(e) => set('dob', e.target.value)} />
         </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="adhar_number">Adhar number</Label>
+          <Input id="adhar_number" value={form.adhar_number} onChange={(e) => set('adhar_number', e.target.value)} placeholder="1234-5678-9012" />
+        </div>
         <div className="space-y-1.5 sm:col-span-2">
           <Label htmlFor="address">Address</Label>
           <Textarea id="address" rows={2} value={form.address} onChange={(e) => set('address', e.target.value)} placeholder="House, street, city, pincode" />

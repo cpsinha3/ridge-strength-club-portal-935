@@ -41,6 +41,9 @@ export default function CustomerCard({ customer: c, onEdit, onDelete }: Props) {
           <Cake className="w-4 h-4 shrink-0" /> <span>{formatDate(c.dob)}</span>
         </div>
         <div className="flex items-center gap-2 text-muted-foreground">
+          <Hash className="w-4 h-4 shrink-0" /> <span className="font-mono text-xs">{c.adhar_number || '—'}</span>
+        </div>
+        <div className="flex items-center gap-2 text-muted-foreground">
           <Receipt className="w-4 h-4 shrink-0" />
           <span>{formatMoney(c.emi_amount)} × {c.emi_tenure || 0} months</span>
         </div>

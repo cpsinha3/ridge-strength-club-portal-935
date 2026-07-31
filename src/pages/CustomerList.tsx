@@ -64,7 +64,7 @@ export default function CustomerList() {
   };
 
   const handleExport = () => {
-    const headers = ['SFDC ID', 'Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Disb. Amount', 'B. Loan Amount', 'Start Month', 'End Month', 'Sales Point', 'Address', 'DOB', 'Notes'];
+    const headers = ['SFDC ID', 'Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Disb. Amount', 'B. Loan Amount', 'Start Month', 'End Month', 'Sales Point', 'Address', 'DOB', 'Adhar Number', 'Notes'];
     const csvContent = [
       headers.join(','),
       ...filteredCustomers.map((c) => [
@@ -81,6 +81,7 @@ export default function CustomerList() {
         c.sales_point || '',
         c.address || '',
         c.dob || '',
+        c.adhar_number || '',
         c.notes || ''
       ].join(','))
     ].join('\n');
@@ -153,6 +154,7 @@ export default function CustomerList() {
                 <th className="px-4 py-3 text-left font-medium text-chalk">Sales Point</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Address</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">DOB</th>
+                <th className="px-4 py-3 text-left font-medium text-chalk">Adhar Number</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Notes</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Actions</th>
               </tr>
@@ -160,7 +162,7 @@ export default function CustomerList() {
             <tbody className="divide-y divide-border">
               {filteredCustomers.length === 0 ? (
                 <tr>
-                  <td colSpan={15} className="px-4 py-8 text-center text-muted-foreground">
+                  <td colSpan={16} className="px-4 py-8 text-center text-muted-foreground">
                     {search ? 'No customers match your search' : 'No customers found'}
                   </td>
                 </tr>
@@ -180,6 +182,7 @@ export default function CustomerList() {
                     <td className="px-4 py-3 text-chalk">{customer.sales_point || '-'}</td>
                     <td className="px-4 py-3 text-chalk text-xs max-w-xs truncate">{customer.address || '-'}</td>
                     <td className="px-4 py-3 text-chalk text-xs">{customer.dob || '-'}</td>
+                    <td className="px-4 py-3 text-chalk font-mono text-xs">{customer.adhar_number || '-'}</td>
                     <td className="px-4 py-3 text-chalk text-xs max-w-xs truncate">{customer.notes || '-'}</td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-1">
