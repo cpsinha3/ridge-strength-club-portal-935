@@ -44,16 +44,16 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Input id="sfdc_id" value={form.sfdc_id} onChange={(e) => set('sfdc_id', e.target.value)} placeholder="001AB..." className="uppercase" />
         </div>
         <div className="space-y-1.5">
+          <Label htmlFor="loan_id">Loan ID *</Label>
+          <Input id="loan_id" required value={form.loan_id} onChange={(e) => set('loan_id', e.target.value)} placeholder="LN-00123" />
+        </div>
+        <div className="space-y-1.5">
           <Label htmlFor="name">Customer name *</Label>
           <Input id="name" required value={form.name} onChange={(e) => set('name', e.target.value)} placeholder="Ramesh Kumar" />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="mobile">Mobile number *</Label>
           <Input id="mobile" required inputMode="tel" value={form.mobile} onChange={(e) => set('mobile', e.target.value)} placeholder="9876543210" />
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="loan_id">Loan ID *</Label>
-          <Input id="loan_id" required value={form.loan_id} onChange={(e) => set('loan_id', e.target.value)} placeholder="LN-00123" />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="dob">Date of birth</Label>
