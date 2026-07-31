@@ -59,6 +59,10 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Label htmlFor="dob">Date of birth</Label>
           <Input id="dob" type="date" value={form.dob} onChange={(e) => set('dob', e.target.value)} />
         </div>
+        <div className="space-y-1.5 sm:col-span-2">
+          <Label htmlFor="address">Address</Label>
+          <Textarea id="address" rows={2} value={form.address} onChange={(e) => set('address', e.target.value)} placeholder="House, street, city, pincode" />
+        </div>
         <div className="space-y-1.5">
           <Label htmlFor="emi_amount">EMI amount (₹)</Label>
           <Input id="emi_amount" type="number" min="0" step="0.01" value={form.emi_amount} onChange={(e) => set('emi_amount', e.target.value)} placeholder="4500" />
@@ -83,11 +87,6 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Label htmlFor="sales_point">Sales point</Label>
           <Input id="sales_point" value={form.sales_point} onChange={(e) => set('sales_point', e.target.value)} placeholder="Ridge Main Branch" />
         </div>
-      </div>
-
-      <div className="space-y-1.5">
-        <Label htmlFor="address">Address</Label>
-        <Textarea id="address" rows={2} value={form.address} onChange={(e) => set('address', e.target.value)} placeholder="House, street, city, pincode" />
       </div>
 
       <div className="space-y-1.5">
