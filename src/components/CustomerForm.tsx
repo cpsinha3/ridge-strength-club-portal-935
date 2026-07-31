@@ -52,12 +52,12 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Input id="name" required value={form.name} onChange={(e) => set('name', e.target.value)} placeholder="Ramesh Kumar S/O Ram Prakash" />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="mobile">Mobile number *</Label>
-          <Input id="mobile" required inputMode="tel" value={form.mobile} onChange={(e) => set('mobile', e.target.value)} placeholder="9876543210" />
-        </div>
-        <div className="space-y-1.5">
           <Label htmlFor="dob">Date of birth</Label>
           <Input id="dob" type="date" value={form.dob} onChange={(e) => set('dob', e.target.value)} />
+        </div>
+        <div className="space-y-1.5 sm:col-span-2">
+          <Label htmlFor="mobile">Mobile number *</Label>
+          <Input id="mobile" required inputMode="tel" value={form.mobile} onChange={(e) => set('mobile', e.target.value)} placeholder="9876543210" />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="adhar_number">Adhar number</Label>
