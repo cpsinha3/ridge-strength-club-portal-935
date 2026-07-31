@@ -65,7 +65,7 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
             </SelectContent>
           </Select>
         </div>
-        <div className="space-y-1.5 sm:col-span-2">
+        <div className="space-y-1.5">
           <Label htmlFor="relation_name">Relation name</Label>
           <Input id="relation_name" value={form.relation_name} onChange={(e) => set('relation_name', e.target.value)} placeholder="Father/Husband/Parent name" />
         </div>
