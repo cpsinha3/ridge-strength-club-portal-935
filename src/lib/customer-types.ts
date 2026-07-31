@@ -3,7 +3,6 @@ export interface Customer {
   sfdc_id: string;
   name: string;
   mobile: string;
-  address: string;
   loan_id: string;
   emi_amount: number | string;
   emi_tenure: number | string;
@@ -14,6 +13,13 @@ export interface Customer {
   sales_point: string;
   dob: string;
   adhar_number: string;
+  at: string;
+  po: string;
+  ps: string;
+  dist: string;
+  landmark: string;
+  state: string;
+  pin: string;
   notes: string;
 }
 
@@ -21,7 +27,6 @@ export const emptyCustomer: Customer = {
   sfdc_id: '',
   name: '',
   mobile: '',
-  address: '',
   loan_id: '',
   emi_amount: '',
   emi_tenure: '',
@@ -32,6 +37,13 @@ export const emptyCustomer: Customer = {
   sales_point: '',
   dob: '',
   adhar_number: '',
+  at: '',
+  po: '',
+  ps: '',
+  dist: '',
+  landmark: '',
+  state: '',
+  pin: '',
   notes: '',
 };
 

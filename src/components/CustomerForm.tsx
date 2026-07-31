@@ -63,9 +63,33 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Label htmlFor="adhar_number">Adhar number</Label>
           <Input id="adhar_number" value={form.adhar_number} onChange={(e) => set('adhar_number', e.target.value)} placeholder="1234-5678-9012" />
         </div>
-        <div className="space-y-1.5 sm:col-span-2">
-          <Label htmlFor="address">Address</Label>
-          <Textarea id="address" rows={2} value={form.address} onChange={(e) => set('address', e.target.value)} placeholder="House, street, city, pincode" />
+        <div className="space-y-1.5">
+          <Label htmlFor="at">AT</Label>
+          <Input id="at" value={form.at} onChange={(e) => set('at', e.target.value)} placeholder="House/Shop No." />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="po">PO</Label>
+          <Input id="po" value={form.po} onChange={(e) => set('po', e.target.value)} placeholder="Post Office" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="ps">PS</Label>
+          <Input id="ps" value={form.ps} onChange={(e) => set('ps', e.target.value)} placeholder="Police Station" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="dist">DIST</Label>
+          <Input id="dist" value={form.dist} onChange={(e) => set('dist', e.target.value)} placeholder="District" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="landmark">LANDMARK</Label>
+          <Input id="landmark" value={form.landmark} onChange={(e) => set('landmark', e.target.value)} placeholder="Near..." />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="state">STATE</Label>
+          <Input id="state" value={form.state} onChange={(e) => set('state', e.target.value)} placeholder="State" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="pin">PIN</Label>
+          <Input id="pin" value={form.pin} onChange={(e) => set('pin', e.target.value)} placeholder="123456" />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="emi_amount">EMI amount (₹)</Label>

@@ -69,8 +69,21 @@ export default function CustomerCard({ customer: c, onEdit, onDelete }: Props) {
         <div className="flex items-center gap-2 text-muted-foreground">
           <Store className="w-4 h-4 shrink-0" /> <span>{c.sales_point || '—'}</span>
         </div>
-        <div className="flex items-start gap-2 text-muted-foreground sm:col-span-2">
-          <MapPin className="w-4 h-4 shrink-0 mt-0.5" /> <span>{c.address || '—'}</span>
+        <div className="flex flex-col gap-0.5 text-muted-foreground sm:col-span-2">
+          <div className="flex items-center gap-1 text-xs">
+            <MapPin className="w-3 h-3 shrink-0" />
+            <span className="font-medium">Address:</span>
+          </div>
+          <div className="text-xs pl-4 space-y-0.5">
+            {c.at && <div>AT: {c.at}</div>}
+            {c.po && <div>PO: {c.po}</div>}
+            {c.ps && <div>PS: {c.ps}</div>}
+            {c.dist && <div>DIST: {c.dist}</div>}
+            {c.landmark && <div>LANDMARK: {c.landmark}</div>}
+            {c.state && <div>STATE: {c.state}</div>}
+            {c.pin && <div>PIN: {c.pin}</div>}
+            {!c.at && !c.po && !c.ps && !c.dist && !c.landmark && !c.state && !c.pin && <span>—</span>}
+          </div>
         </div>
       </div>
 
