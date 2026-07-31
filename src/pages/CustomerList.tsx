@@ -64,7 +64,7 @@ export default function CustomerList() {
   };
 
   const handleExport = () => {
-    const headers = ['SFDC ID', 'Name', 'Relation', 'Relation Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Disb. Amount', 'B. Loan Amount', 'Start Month', 'End Month', 'Sales Point', 'AT', 'PO', 'PS', 'DIST', 'LANDMARK', 'STATE', 'PIN', 'DOB', 'Adhar Number', 'Notes'];
+    const headers = ['SFDC ID', 'Name', 'Relation', 'Relation Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Disb. Amount', 'B. Loan Amount', 'Disb. Date', 'UTR Number', 'Start Month', 'End Month', 'Sales Point', 'AT', 'PO', 'PS', 'DIST', 'LANDMARK', 'STATE', 'PIN', 'DOB', 'Adhar Number', 'Notes'];
     const csvContent = [
       headers.join(','),
       ...filteredCustomers.map((c) => [
@@ -78,6 +78,8 @@ export default function CustomerList() {
         c.emi_tenure || 0,
         c.disb_amount || 0,
         c.b_loan_amount || 0,
+        c.disb_date || '',
+        c.utr_number || '',
         c.starting_month || '',
         c.emi_end_month || '',
         c.sales_point || '',
@@ -159,6 +161,8 @@ export default function CustomerList() {
                 <th className="px-4 py-3 text-left font-medium text-chalk">Tenure</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Disb. Amount</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">B. Loan Amount</th>
+                <th className="px-4 py-3 text-left font-medium text-chalk">Disb. Date</th>
+                <th className="px-4 py-3 text-left font-medium text-chalk">UTR Number</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Start Month</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">End Month</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Sales Point</th>
@@ -178,7 +182,7 @@ export default function CustomerList() {
             <tbody className="divide-y divide-border">
               {filteredCustomers.length === 0 ? (
                 <tr>
-                  <td colSpan={24} className="px-4 py-8 text-center text-muted-foreground">
+                  <td colSpan={26} className="px-4 py-8 text-center text-muted-foreground">
                     {search ? 'No customers match your search' : 'No customers found'}
                   </td>
                 </tr>
@@ -195,6 +199,8 @@ export default function CustomerList() {
                     <td className="px-4 py-3 text-chalk">{customer.emi_tenure || 0} months</td>
                     <td className="px-4 py-3 text-chalk font-medium">{formatMoney(customer.disb_amount || 0)}</td>
                     <td className="px-4 py-3 text-chalk font-medium">{formatMoney(customer.b_loan_amount || 0)}</td>
+                    <td className="px-4 py-3 text-chalk text-xs">{customer.disb_date || '-'}</td>
+                    <td className="px-4 py-3 text-chalk font-mono text-xs">{customer.utr_number || '-'}</td>
                     <td className="px-4 py-3 text-chalk text-xs">{customer.starting_month || '-'}</td>
                     <td className="px-4 py-3 text-chalk text-xs">{customer.emi_end_month || '-'}</td>
                     <td className="px-4 py-3 text-chalk">{customer.sales_point || '-'}</td>

@@ -130,6 +130,14 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Input id="b_loan_amount" type="number" min="0" step="0.01" value={form.b_loan_amount} onChange={(e) => set('b_loan_amount', e.target.value)} placeholder="450000" />
         </div>
         <div className="space-y-1.5">
+          <Label htmlFor="disb_date">Disb. Date</Label>
+          <Input id="disb_date" type="date" value={form.disb_date} onChange={(e) => set('disb_date', e.target.value)} />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="utr_number">UTR Number</Label>
+          <Input id="utr_number" value={form.utr_number} onChange={(e) => set('utr_number', e.target.value)} placeholder="UTR123456789" />
+        </div>
+        <div className="space-y-1.5">
           <Label htmlFor="sales_point">Sales point</Label>
           <Input id="sales_point" value={form.sales_point} onChange={(e) => set('sales_point', e.target.value)} placeholder="Ridge Main Branch" />
         </div>

@@ -25,6 +25,8 @@ export default function AddCustomer() {
         emi_tenure: Number(customer.emi_tenure || 0),
         disb_amount: Number(customer.disb_amount || 0),
         b_loan_amount: Number(customer.b_loan_amount || 0),
+        disb_date: customer.disb_date || '',
+        utr_number: customer.utr_number || '',
         starting_month: customer.starting_month || '',
         emi_end_month: customer.emi_end_month || '',
         sales_point: customer.sales_point || '',

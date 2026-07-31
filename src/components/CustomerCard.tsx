@@ -62,6 +62,14 @@ export default function CustomerCard({ customer: c, onEdit, onDelete }: Props) {
         </div>
         <div className="flex items-center gap-2 text-muted-foreground">
           <CalendarClock className="w-4 h-4 shrink-0" />
+          <span>{formatDate(c.disb_date)}</span>
+        </div>
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <Hash className="w-4 h-4 shrink-0" />
+          <span className="font-mono text-xs">{c.utr_number || '—'}</span>
+        </div>
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <CalendarClock className="w-4 h-4 shrink-0" />
           <span>
             {c.starting_month ? (
               <>

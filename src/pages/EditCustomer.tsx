@@ -57,6 +57,8 @@ export default function EditCustomer() {
         emi_tenure: Number(updatedCustomer.emi_tenure || 0),
         disb_amount: Number(updatedCustomer.disb_amount || 0),
         b_loan_amount: Number(updatedCustomer.b_loan_amount || 0),
+        disb_date: updatedCustomer.disb_date || '',
+        utr_number: updatedCustomer.utr_number || '',
         starting_month: updatedCustomer.starting_month || '',
         emi_end_month: updatedCustomer.emi_end_month || '',
         sales_point: updatedCustomer.sales_point || '',
