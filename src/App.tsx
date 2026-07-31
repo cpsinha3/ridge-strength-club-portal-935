@@ -39,11 +39,6 @@ const App = () => (
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={
-              <PublicOnly>
-                <Navigate to="/login" replace />
-              </PublicOnly>
-            } />
             <Route path="/login" element={<PublicOnly><Login /></PublicOnly>} />
             <Route path="/signup" element={<PublicOnly><Signup /></PublicOnly>} />
             <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>

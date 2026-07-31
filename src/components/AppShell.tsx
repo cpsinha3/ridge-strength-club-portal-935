@@ -1,6 +1,6 @@
 import { useAuth } from '@/lib/auth-context';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Dumbbell, Calendar, User, LogOut, Shield, Menu, X, Users, UserPlus, Edit, LayoutDashboard, Bell, Search, Settings, ChevronDown, Building2 } from 'lucide-react';
+import { Calendar, User, LogOut, Shield, Menu, X, Users, UserPlus, LayoutDashboard, Bell, Search, Settings, ChevronDown, Building2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import db from '@/lib/shared/kliv-database.js';
 import { Button } from '@/components/ui/button';

@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '@/lib/shared/kliv-database.js';
 import { Customer, formatMoney } from '@/lib/customer-types';
 import { PageSkeleton } from '@/components/LoadingSkeleton';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowLeft, Search, Download, RefreshCw, Edit, Trash2, Eye } from 'lucide-react';
+import { ArrowLeft, Search, Download, RefreshCw, Edit, Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function CustomerList() {
@@ -49,8 +49,9 @@ export default function CustomerList() {
     }
   }, [search, customers]);
 
-  const handleDelete = async (id: number, name: string) => {
+  const handleDelete = async (id: number | undefined, name: string) => {
     if (!confirm(`Are you sure you want to delete ${name}?`)) return;
+    if (!id) return;
     
     try {
       await db.delete('customers', { _row_id: `eq.${id}` });
