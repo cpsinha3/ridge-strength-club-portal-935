@@ -274,7 +274,10 @@ export default function AppShell() {
 
             <nav className="space-y-1">
               <NavLink to="/customers" className={sidebarLinkClass} end>
-                <LayoutDashboard className="w-4 h-4" /> View All
+                <LayoutDashboard className="w-4 h-4" /> Card View
+              </NavLink>
+              <NavLink to="/customers/list" className={sidebarLinkClass}>
+                <Users className="w-4 h-4" /> Raw Table
               </NavLink>
               <NavLink to="/customer/add" className={sidebarLinkClass}>
                 <UserPlus className="w-4 h-4" /> Add Customer

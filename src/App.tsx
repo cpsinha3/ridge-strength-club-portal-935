@@ -11,6 +11,7 @@ import Schedule from "@/pages/Schedule";
 import MyActivity from "@/pages/MyActivity";
 import StaffDashboard from "@/pages/StaffDashboard";
 import Customers from "@/pages/Customers";
+import CustomerList from "@/pages/CustomerList";
 import AddCustomer from "@/pages/AddCustomer";
 import EditCustomer from "@/pages/EditCustomer";
 import NotFound from "@/pages/NotFound";
@@ -47,6 +48,7 @@ const App = () => (
               <Route path="/my-activity" element={<MyActivity />} />
               <Route path="/staff" element={<StaffDashboard />} />
               <Route path="/customers" element={<Customers />} />
+              <Route path="/customers/list" element={<CustomerList />} />
               <Route path="/customer/add" element={<AddCustomer />} />
               <Route path="/customer/:id/edit" element={<EditCustomer />} />
             </Route>
