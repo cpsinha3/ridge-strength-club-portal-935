@@ -45,6 +45,10 @@ export default function CustomerCard({ customer: c, onEdit, onDelete }: Props) {
           <span>{formatMoney(c.emi_amount)} × {c.emi_tenure || 0} months</span>
         </div>
         <div className="flex items-center gap-2 text-muted-foreground">
+          <Receipt className="w-4 h-4 shrink-0" />
+          <span>Disb. {formatMoney(c.disb_amount || 0)}</span>
+        </div>
+        <div className="flex items-center gap-2 text-muted-foreground">
           <CalendarClock className="w-4 h-4 shrink-0" />
           <span>
             {c.starting_month ? (

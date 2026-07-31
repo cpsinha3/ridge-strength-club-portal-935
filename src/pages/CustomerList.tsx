@@ -64,7 +64,7 @@ export default function CustomerList() {
   };
 
   const handleExport = () => {
-    const headers = ['SFDC ID', 'Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Start Month', 'End Month', 'Sales Point', 'Address', 'DOB', 'Notes'];
+    const headers = ['SFDC ID', 'Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Disb. Amount', 'Start Month', 'End Month', 'Sales Point', 'Address', 'DOB', 'Notes'];
     const csvContent = [
       headers.join(','),
       ...filteredCustomers.map((c) => [
@@ -74,6 +74,7 @@ export default function CustomerList() {
         c.loan_id || '',
         c.emi_amount || 0,
         c.emi_tenure || 0,
+        c.disb_amount || 0,
         c.starting_month || '',
         c.emi_end_month || '',
         c.sales_point || '',
@@ -144,6 +145,7 @@ export default function CustomerList() {
                 <th className="px-4 py-3 text-left font-medium text-chalk">Loan ID</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">EMI Amount</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Tenure</th>
+                <th className="px-4 py-3 text-left font-medium text-chalk">Disb. Amount</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Start Month</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">End Month</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Sales Point</th>
@@ -156,7 +158,7 @@ export default function CustomerList() {
             <tbody className="divide-y divide-border">
               {filteredCustomers.length === 0 ? (
                 <tr>
-                  <td colSpan={13} className="px-4 py-8 text-center text-muted-foreground">
+                  <td colSpan={14} className="px-4 py-8 text-center text-muted-foreground">
                     {search ? 'No customers match your search' : 'No customers found'}
                   </td>
                 </tr>
@@ -169,6 +171,7 @@ export default function CustomerList() {
                     <td className="px-4 py-3 text-chalk font-mono text-xs">{customer.loan_id || '-'}</td>
                     <td className="px-4 py-3 text-chalk font-medium">{formatMoney(customer.emi_amount || 0)}</td>
                     <td className="px-4 py-3 text-chalk">{customer.emi_tenure || 0} months</td>
+                    <td className="px-4 py-3 text-chalk font-medium">{formatMoney(customer.disb_amount || 0)}</td>
                     <td className="px-4 py-3 text-chalk text-xs">{customer.starting_month || '-'}</td>
                     <td className="px-4 py-3 text-chalk text-xs">{customer.emi_end_month || '-'}</td>
                     <td className="px-4 py-3 text-chalk">{customer.sales_point || '-'}</td>
