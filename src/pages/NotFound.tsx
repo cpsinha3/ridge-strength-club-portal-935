@@ -13,10 +13,10 @@ export default function NotFound() {
         <h1 className="text-4xl font-bold text-chalk">404</h1>
         <p className="text-muted-foreground">This page doesn't exist. Maybe it's rest day.</p>
         <button
-          onClick={() => navigate('/')}
-          className="px-4 py-2 rounded-md bg-ember text-white text-sm font-medium hover:bg-ember-glow transition-colors"
+          onClick={() => navigate('/customers')}
+          className="px-4 py-2 rounded-md bg-amber-500 text-white text-sm font-medium hover:bg-amber-600 transition-colors"
         >
-          Back to Schedule
+          Back to Dashboard
         </button>
       </div>
     </div>

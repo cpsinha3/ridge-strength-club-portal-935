@@ -5,24 +5,7 @@ export function CardSkeleton() {
       <div className="h-3 bg-carbon-lighter rounded w-1/2 mb-2" />
       <div className="h-3 bg-carbon-lighter rounded w-1/3" />
     </div>
-  );
-}
-
-export function ScheduleSkeleton() {
-  return (
-    <div className="space-y-4">
-      <div className="flex gap-2 overflow-x-auto pb-2">
-        {Array.from({ length: 7 }).map((_, i) => (
-          <div key={i} className="h-10 w-20 bg-carbon-lighter rounded-md animate-pulse flex-shrink-0" />
-        ))}
-      </div>
-      <div className="grid gap-3">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <CardSkeleton key={i} />
-        ))}
-      </div>
-    </div>
-  );
+);
 }
 
 export function PageSkeleton() {

@@ -144,8 +144,8 @@ export default function MyActivity() {
           <EmptyState
             icon={Dumbbell}
             title="No check-ins yet"
-            description="Head to the schedule and RSVP for your first class."
-            action={{ label: 'Browse Schedule', onClick: () => navigate('/') }}
+            description="Get started by exploring the customer management system."
+            action={{ label: 'Go to Customers', onClick: () => navigate('/customers') }}
           />
         ) : (
           <>

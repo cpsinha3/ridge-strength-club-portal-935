@@ -1,6 +1,6 @@
 import { useAuth } from '@/lib/auth-context';
 import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Calendar, User, LogOut, Shield, Menu, X, Users, UserPlus, LayoutDashboard, Bell, Search, Settings, ChevronDown, Building2 } from 'lucide-react';
+import { User, LogOut, Shield, Menu, X, Users, UserPlus, LayoutDashboard, Bell, Search, Settings, ChevronDown, Building2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import db from '@/lib/shared/kliv-database.js';
 import { Button } from '@/components/ui/button';
@@ -81,9 +81,6 @@ export default function AppShell() {
               
               {/* Desktop Navigation */}
               <nav className="hidden xl:flex items-center gap-1">
-                <NavLink to="/" className={navLinkClass} end>
-                  <Calendar className="w-4 h-4" /> Schedule
-                </NavLink>
                 <NavLink to="/customers" className={navLinkClass}>
                   <Users className="w-4 h-4" /> Customers
                 </NavLink>
@@ -212,9 +209,6 @@ export default function AppShell() {
           {menuOpen && (
             <div className="xl:hidden border-t border-border bg-carbon/50 backdrop-blur-xl">
               <nav className="px-4 py-3 space-y-1">
-                <NavLink to="/" className={navLinkClass} end onClick={() => setMenuOpen(false)}>
-                  <Calendar className="w-4 h-4" /> Schedule
-                </NavLink>
                 <NavLink to="/customers" className={navLinkClass} onClick={() => setMenuOpen(false)}>
                   <Users className="w-4 h-4" /> Customers
                 </NavLink>

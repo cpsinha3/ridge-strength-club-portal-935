@@ -6,7 +6,6 @@ import { AuthProvider, useAuth } from "@/lib/auth-context";
 import AppShell from "@/components/AppShell";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
-import Schedule from "@/pages/Schedule";
 import MyActivity from "@/pages/MyActivity";
 import StaffDashboard from "@/pages/StaffDashboard";
 import Customers from "@/pages/Customers";
@@ -42,7 +41,7 @@ const App = () => (
             <Route path="/login" element={<PublicOnly><Login /></PublicOnly>} />
             <Route path="/signup" element={<PublicOnly><Signup /></PublicOnly>} />
             <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
-              <Route path="/" element={<Schedule />} />
+              <Route path="/" element={<Customers />} />
               <Route path="/my-activity" element={<MyActivity />} />
               <Route path="/staff" element={<StaffDashboard />} />
               <Route path="/customers" element={<Customers />} />
