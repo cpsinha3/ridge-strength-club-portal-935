@@ -1,21 +1,26 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/lib/auth-context';
+import { useNavigate } from 'react-router-dom';
 import db from '@/lib/shared/kliv-database.js';
 import { getWeekDates, getTodayStr } from '@/lib/utils/dates';
 import ClassCard from '@/components/ClassCard';
+import StatCard from '@/components/StatCard';
 import { ScheduleSkeleton } from '@/components/LoadingSkeleton';
 import EmptyState from '@/components/EmptyState';
-import { Calendar } from 'lucide-react';
+import { Calendar, Users, Table, TrendingUp } from 'lucide-react';
 import { toast } from 'sonner';
+import { Button } from '@/components/ui/button';
 
 export default function Schedule() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(getTodayStr());
   const [classes, setClasses] = useState<any[]>([]);
   const [rsvps, setRsvps] = useState<any[]>([]);
   const [allRsvps, setAllRsvps] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<number | null>(null);
+  const [customerStats, setCustomerStats] = useState({ totalCustomers: 0, totalSalesPoints: 0 });
 
   const weekDates = getWeekDates();
   const selectedDay = weekDates.find(d => d.date === selectedDate);
@@ -23,7 +28,7 @@ export default function Schedule() {
 
   const fetchData = useCallback(async () => {
     try {
-      const [cls, userRsvps, dateRsvps] = await Promise.all([
+      const [cls, userRsvps, dateRsvps, customers] = await Promise.all([
         db.query('classes', {
           select: '_row_id,name,description,start_time,end_time,capacity,day_of_week,instructor_id',
           day_of_week: `eq.${selectedDow}`,
@@ -38,6 +43,7 @@ export default function Schedule() {
           class_date: `eq.${selectedDate}`,
           status: 'eq.confirmed',
         }),
+        db.query('customers', { select: 'sales_point', limit: '1000' }),
       ]);
 
       // Fetch instructor names
@@ -54,6 +60,13 @@ export default function Schedule() {
         ...c,
         instructor_name: instructorMap[c.instructor_id] || '',
       }));
+
+      // Calculate customer stats
+      const salesPoints = new Set(customers.map((c: any) => c.sales_point).filter(Boolean));
+      setCustomerStats({
+        totalCustomers: customers.length,
+        totalSalesPoints: salesPoints.size
+      });
 
       setClasses(enriched);
       setRsvps(userRsvps);
@@ -107,9 +120,27 @@ export default function Schedule() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-xl font-bold text-chalk">Class Schedule</h1>
-        <p className="text-sm text-muted-foreground mt-1">This week at IDFC First Bank</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-xl font-bold text-chalk">Class Schedule</h1>
+          <p className="text-sm text-muted-foreground mt-1">This week at IDFC First Bank</p>
+        </div>
+        <Button
+          onClick={() => navigate('/customers/list')}
+          variant="outline"
+          size="sm"
+          className="flex items-center gap-2"
+        >
+          <Table className="w-4 h-4" />
+          View Customer Table
+        </Button>
+      </div>
+
+      {/* Quick Stats */}
+      <div className="grid gap-3 grid-cols-2 sm:grid-cols-3">
+        <StatCard icon={Users} label="Total Customers" value={customerStats.totalCustomers} />
+        <StatCard icon={TrendingUp} label="Sales Points" value={customerStats.totalSalesPoints} />
+        <StatCard icon={Calendar} label="Today's Classes" value={classes.length} />
       </div>
 
       {/* Day selector */}
