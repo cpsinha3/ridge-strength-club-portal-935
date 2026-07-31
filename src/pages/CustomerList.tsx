@@ -64,12 +64,14 @@ export default function CustomerList() {
   };
 
   const handleExport = () => {
-    const headers = ['SFDC ID', 'Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Disb. Amount', 'B. Loan Amount', 'Start Month', 'End Month', 'Sales Point', 'AT', 'PO', 'PS', 'DIST', 'LANDMARK', 'STATE', 'PIN', 'DOB', 'Adhar Number', 'Notes'];
+    const headers = ['SFDC ID', 'Name', 'Relation', 'Relation Name', 'Mobile', 'Loan ID', 'EMI Amount', 'Tenure', 'Disb. Amount', 'B. Loan Amount', 'Start Month', 'End Month', 'Sales Point', 'AT', 'PO', 'PS', 'DIST', 'LANDMARK', 'STATE', 'PIN', 'DOB', 'Adhar Number', 'Notes'];
     const csvContent = [
       headers.join(','),
       ...filteredCustomers.map((c) => [
         c.sfdc_id || '',
         c.name || '',
+        c.relation_type || '',
+        c.relation_name || '',
         c.mobile || '',
         c.loan_id || '',
         c.emi_amount || 0,
@@ -149,6 +151,8 @@ export default function CustomerList() {
               <tr>
                 <th className="px-4 py-3 text-left font-medium text-chalk">SFDC ID</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Name</th>
+                <th className="px-4 py-3 text-left font-medium text-chalk">Relation</th>
+                <th className="px-4 py-3 text-left font-medium text-chalk">Relation Name</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Mobile</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">Loan ID</th>
                 <th className="px-4 py-3 text-left font-medium text-chalk">EMI Amount</th>
@@ -174,7 +178,7 @@ export default function CustomerList() {
             <tbody className="divide-y divide-border">
               {filteredCustomers.length === 0 ? (
                 <tr>
-                  <td colSpan={22} className="px-4 py-8 text-center text-muted-foreground">
+                  <td colSpan={24} className="px-4 py-8 text-center text-muted-foreground">
                     {search ? 'No customers match your search' : 'No customers found'}
                   </td>
                 </tr>
@@ -183,6 +187,8 @@ export default function CustomerList() {
                   <tr key={customer._row_id} className="hover:bg-carbon-lighter/50">
                     <td className="px-4 py-3 text-chalk font-mono text-xs">{customer.sfdc_id || '-'}</td>
                     <td className="px-4 py-3 text-chalk font-medium">{customer.name || '-'}</td>
+                    <td className="px-4 py-3 text-chalk text-xs">{customer.relation_type || '-'}</td>
+                    <td className="px-4 py-3 text-chalk text-xs">{customer.relation_name || '-'}</td>
                     <td className="px-4 py-3 text-chalk">{customer.mobile || '-'}</td>
                     <td className="px-4 py-3 text-chalk font-mono text-xs">{customer.loan_id || '-'}</td>
                     <td className="px-4 py-3 text-chalk font-medium">{formatMoney(customer.emi_amount || 0)}</td>
