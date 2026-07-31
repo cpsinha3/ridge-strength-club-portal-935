@@ -49,8 +49,6 @@ export default function EditCustomer() {
       const payload = {
         sfdc_id: (updatedCustomer.sfdc_id || '').trim().toUpperCase(),
         name: updatedCustomer.name.trim(),
-        relation_type: updatedCustomer.relation_type || '',
-        relation_name: updatedCustomer.relation_name || '',
         mobile: updatedCustomer.mobile.trim(),
         loan_id: updatedCustomer.loan_id.trim(),
         emi_amount: Number(updatedCustomer.emi_amount || 0),

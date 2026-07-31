@@ -4,7 +4,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Props {
   initial?: Customer;
@@ -50,24 +49,7 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="name">Customer name *</Label>
-          <Input id="name" required value={form.name} onChange={(e) => set('name', e.target.value)} placeholder="Ramesh Kumar" />
-        </div>
-        <div className="space-y-1.5">
-          <Label htmlFor="relation_type">Relation</Label>
-          <Select value={form.relation_type} onValueChange={(value) => set('relation_type', value)}>
-            <SelectTrigger>
-              <SelectValue placeholder="Select relation" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="S/O">S/O (Son of)</SelectItem>
-              <SelectItem value="W/O">W/O (Wife of)</SelectItem>
-              <SelectItem value="D/O">D/O (Daughter of)</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="space-y-1.5 sm:col-span-2">
-          <Label htmlFor="relation_name">Relation name</Label>
-          <Input id="relation_name" value={form.relation_name} onChange={(e) => set('relation_name', e.target.value)} placeholder="Father/Husband/Parent name" />
+          <Input id="name" required value={form.name} onChange={(e) => set('name', e.target.value)} placeholder="Ramesh Kumar S/O Ram Prakash" />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="mobile">Mobile number *</Label>

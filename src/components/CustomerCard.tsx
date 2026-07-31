@@ -22,11 +22,6 @@ export default function CustomerCard({ customer: c, onEdit, onDelete }: Props) {
               </span>
             )}
           </div>
-          {c.relation_type && c.relation_name && (
-            <p className="text-xs text-muted-foreground mt-1">
-              {c.relation_type} {c.relation_name}
-            </p>
-          )}
         </div>
         <div className="flex gap-1 shrink-0">
           <Button size="icon" variant="ghost" onClick={() => onEdit(c)} aria-label="Edit">
