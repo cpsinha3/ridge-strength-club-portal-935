@@ -81,8 +81,8 @@ export default function AppShell() {
               
               {/* Desktop Navigation */}
               <nav className="hidden xl:flex items-center gap-1">
-                <NavLink to="/dashboard" className={navLinkClass} end>
-                  <Calendar className="w-4 h-4" /> Dashboard
+                <NavLink to="/" className={navLinkClass} end>
+                  <Calendar className="w-4 h-4" /> Schedule
                 </NavLink>
                 <NavLink to="/customers" className={navLinkClass}>
                   <Users className="w-4 h-4" /> Customers
@@ -212,8 +212,8 @@ export default function AppShell() {
           {menuOpen && (
             <div className="xl:hidden border-t border-border bg-carbon/50 backdrop-blur-xl">
               <nav className="px-4 py-3 space-y-1">
-                <NavLink to="/dashboard" className={navLinkClass} end onClick={() => setMenuOpen(false)}>
-                  <Calendar className="w-4 h-4" /> Dashboard
+                <NavLink to="/" className={navLinkClass} end onClick={() => setMenuOpen(false)}>
+                  <Calendar className="w-4 h-4" /> Schedule
                 </NavLink>
                 <NavLink to="/customers" className={navLinkClass} onClick={() => setMenuOpen(false)}>
                   <Users className="w-4 h-4" /> Customers
