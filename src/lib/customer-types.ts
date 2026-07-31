@@ -8,6 +8,7 @@ export interface Customer {
   emi_amount: number | string;
   emi_tenure: number | string;
   disb_amount: number | string;
+  b_loan_amount: number | string;
   starting_month: string;
   emi_end_month: string;
   sales_point: string;
@@ -24,6 +25,7 @@ export const emptyCustomer: Customer = {
   emi_amount: '',
   emi_tenure: '',
   disb_amount: '',
+  b_loan_amount: '',
   starting_month: '',
   emi_end_month: '',
   sales_point: '',

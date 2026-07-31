@@ -72,6 +72,10 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Input id="disb_amount" type="number" min="0" step="0.01" value={form.disb_amount} onChange={(e) => set('disb_amount', e.target.value)} placeholder="500000" />
         </div>
         <div className="space-y-1.5">
+          <Label htmlFor="b_loan_amount">B. Loan amount (₹)</Label>
+          <Input id="b_loan_amount" type="number" min="0" step="0.01" value={form.b_loan_amount} onChange={(e) => set('b_loan_amount', e.target.value)} placeholder="450000" />
+        </div>
+        <div className="space-y-1.5">
           <Label htmlFor="starting_month">Starting month</Label>
           <Input id="starting_month" type="month" value={form.starting_month} onChange={(e) => set('starting_month', e.target.value)} />
         </div>
