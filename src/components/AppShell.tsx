@@ -25,7 +25,7 @@ export default function AppShell() {
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <NavLink to="/" className="flex items-center gap-2">
             <Dumbbell className="w-6 h-6 text-ember" />
-            <span className="font-bold text-lg tracking-tight text-chalk">RIDGE</span>
+            <span className="font-bold text-lg tracking-tight text-chalk">IDFC</span>
           </NavLink>
 
           {/* Desktop nav */}

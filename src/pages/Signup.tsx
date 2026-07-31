@@ -55,7 +55,7 @@ export default function Signup() {
             <Dumbbell className="w-7 h-7 text-ember" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-chalk">Create Account</h1>
-          <p className="text-sm text-muted-foreground">Join Ridge Strength Club</p>
+          <p className="text-sm text-muted-foreground">Join IDFC First Bank</p>
         </div>
 
         {/* Form */}

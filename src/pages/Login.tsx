@@ -44,7 +44,7 @@ export default function Login() {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-ember/10 border border-ember/20 mb-2">
             <Dumbbell className="w-7 h-7 text-ember" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-chalk">RIDGE STRENGTH CLUB</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-chalk">IDFC First Bank</h1>
           <p className="text-sm text-muted-foreground">Member Portal</p>
         </div>
 
