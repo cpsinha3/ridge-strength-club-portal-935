@@ -2,6 +2,8 @@ export interface Customer {
   _row_id?: number;
   sfdc_id: string;
   name: string;
+  relation_type: string;
+  relation_name: string;
   mobile: string;
   loan_id: string;
   emi_amount: number | string;
@@ -26,6 +28,8 @@ export interface Customer {
 export const emptyCustomer: Customer = {
   sfdc_id: '',
   name: '',
+  relation_type: '',
+  relation_name: '',
   mobile: '',
   loan_id: '',
   emi_amount: '',

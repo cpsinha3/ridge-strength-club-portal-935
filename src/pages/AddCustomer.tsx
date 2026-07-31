@@ -17,6 +17,8 @@ export default function AddCustomer() {
       const payload = {
         sfdc_id: (customer.sfdc_id || '').trim().toUpperCase(),
         name: customer.name.trim(),
+        relation_type: customer.relation_type || '',
+        relation_name: customer.relation_name || '',
         mobile: customer.mobile.trim(),
         loan_id: customer.loan_id.trim(),
         emi_amount: Number(customer.emi_amount || 0),
