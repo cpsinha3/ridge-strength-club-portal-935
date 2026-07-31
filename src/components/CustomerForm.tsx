@@ -138,6 +138,14 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Input id="utr_number" value={form.utr_number} onChange={(e) => set('utr_number', e.target.value)} placeholder="UTR123456789" />
         </div>
         <div className="space-y-1.5">
+          <Label htmlFor="engine_number">Engine Number</Label>
+          <Input id="engine_number" value={form.engine_number} onChange={(e) => set('engine_number', e.target.value)} placeholder="ENGINE123456" />
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="frame_number">Frame Number</Label>
+          <Input id="frame_number" value={form.frame_number} onChange={(e) => set('frame_number', e.target.value)} placeholder="FRAME789012" />
+        </div>
+        <div className="space-y-1.5">
           <Label htmlFor="sales_point">Sales point</Label>
           <Input id="sales_point" value={form.sales_point} onChange={(e) => set('sales_point', e.target.value)} placeholder="Ridge Main Branch" />
         </div>

@@ -27,6 +27,8 @@ export default function AddCustomer() {
         b_loan_amount: Number(customer.b_loan_amount || 0),
         disb_date: customer.disb_date || '',
         utr_number: customer.utr_number || '',
+        engine_number: customer.engine_number || '',
+        frame_number: customer.frame_number || '',
         starting_month: customer.starting_month || '',
         emi_end_month: customer.emi_end_month || '',
         sales_point: customer.sales_point || '',

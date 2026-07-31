@@ -12,6 +12,8 @@ export interface Customer {
   b_loan_amount: number | string;
   disb_date: string;
   utr_number: string;
+  engine_number: string;
+  frame_number: string;
   starting_month: string;
   emi_end_month: string;
   sales_point: string;
@@ -40,6 +42,8 @@ export const emptyCustomer: Customer = {
   b_loan_amount: '',
   disb_date: '',
   utr_number: '',
+  engine_number: '',
+  frame_number: '',
   starting_month: '',
   emi_end_month: '',
   sales_point: '',
