@@ -2,21 +2,12 @@ import { useState } from 'react';
 import { useAuth } from '@/lib/auth-context';
 import { useNavigate, Link } from 'react-router-dom';
 import { Dumbbell, Eye, EyeOff, Loader2 } from 'lucide-react';
-import { toast } from 'sonner';
-
-const DEMO_ACCOUNTS = [
-  { role: 'Admin', email: 'cpsinha3@gmail.com', password: 'cplikes3', tier: 'Primary owner' },
-  { role: 'Staff', email: 'coach@ridgestrength.com', password: 'Rg$tR3ngt#2024x', tier: 'Full access' },
-  { role: 'Member (Unlimited)', email: 'sarah@example.com', password: 'Member2024!', tier: 'Unlimited' },
-  { role: 'Member (8-Pack)', email: 'jake@example.com', password: 'Member2024!', tier: '8 classes/mo' },
-  { role: 'Member (Drop-in)', email: 'maria@example.com', password: 'Member2024!', tier: 'Pay per class' },
-];
 
 export default function Login() {
   const { signIn } = useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('cpsinha3@gmail.com');
-  const [password, setPassword] = useState('cplikes3');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -33,22 +24,6 @@ export default function Login() {
       if (msg.includes('bad_credentials')) setError('Invalid email or password.');
       else if (msg.includes('account_locked')) setError('Account locked. Try again later.');
       else setError('Something went wrong. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const quickLogin = async (acct: typeof DEMO_ACCOUNTS[0]) => {
-    setEmail(acct.email);
-    setPassword(acct.password);
-    setError('');
-    setLoading(true);
-    try {
-      await signIn(acct.email, acct.password);
-      toast.success(`Signed in as ${acct.role}`);
-      navigate('/');
-    } catch {
-      setError('Demo login failed. Please try manually.');
     } finally {
       setLoading(false);
     }
@@ -121,32 +96,6 @@ export default function Login() {
           <Link to="/signup" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-ember transition-colors">
             Create an account →
           </Link>
-        </div>
-
-        {/* Demo accounts */}
-        <div className="space-y-3">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-border" /></div>
-            <div className="relative flex justify-center"><span className="bg-carbon px-3 text-xs text-muted-foreground">Demo Accounts</span></div>
-          </div>
-          <div className="grid gap-2">
-            {DEMO_ACCOUNTS.map(acct => (
-              <button
-                key={acct.email}
-                onClick={() => quickLogin(acct)}
-                disabled={loading}
-                className="flex items-center justify-between px-3 py-2.5 rounded-md border border-border bg-carbon-light hover:bg-carbon-lighter hover:border-ember/30 transition-all text-left group disabled:opacity-50"
-              >
-                <div>
-                  <div className="text-sm font-medium text-chalk group-hover:text-ember transition-colors">{acct.role}</div>
-                  <div className="text-xs text-muted-foreground">{acct.email}</div>
-                </div>
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium bg-carbon-lighter px-2 py-0.5 rounded">
-                  {acct.tier}
-                </span>
-              </button>
-            ))}
-          </div>
         </div>
 
         <p className="text-center text-[11px] text-muted-foreground">
