@@ -47,7 +47,7 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Label htmlFor="loan_id">Loan ID *</Label>
           <Input id="loan_id" required value={form.loan_id} onChange={(e) => set('loan_id', e.target.value)} placeholder="LN-00123" />
         </div>
-        <div className="space-y-1.5">
+        <div className="space-y-1.5 sm:col-span-2">
           <Label htmlFor="name">Customer name *</Label>
           <Input id="name" required value={form.name} onChange={(e) => set('name', e.target.value)} placeholder="Ramesh Kumar S/O Ram Prakash" />
         </div>
@@ -55,13 +55,13 @@ export default function CustomerForm({ initial, onSubmit, onCancel, loading = fa
           <Label htmlFor="dob">Date of birth</Label>
           <Input id="dob" type="date" value={form.dob} onChange={(e) => set('dob', e.target.value)} />
         </div>
-        <div className="space-y-1.5 sm:col-span-2">
-          <Label htmlFor="mobile">Mobile number *</Label>
-          <Input id="mobile" required inputMode="tel" value={form.mobile} onChange={(e) => set('mobile', e.target.value)} placeholder="9876543210" />
-        </div>
         <div className="space-y-1.5">
           <Label htmlFor="adhar_number">Adhar number</Label>
           <Input id="adhar_number" value={form.adhar_number} onChange={(e) => set('adhar_number', e.target.value)} placeholder="1234-5678-9012" />
+        </div>
+        <div className="space-y-1.5 sm:col-span-2">
+          <Label htmlFor="mobile">Mobile number *</Label>
+          <Input id="mobile" required inputMode="tel" value={form.mobile} onChange={(e) => set('mobile', e.target.value)} placeholder="9876543210" />
         </div>
         <div className="space-y-1.5">
           <Label htmlFor="at">AT</Label>
