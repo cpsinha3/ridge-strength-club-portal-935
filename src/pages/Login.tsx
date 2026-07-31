@@ -41,9 +41,7 @@ export default function Login() {
       <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-ember/10 border border-ember/20 mb-2">
-            <Dumbbell className="w-7 h-7 text-ember" />
-          </div>
+          <img src="/idfc-first-bank-logo.svg" alt="IDFC First Bank Logo" className="h-10 mx-auto mb-2" />
           <h1 className="text-2xl font-bold tracking-tight text-chalk">IDFC First Bank</h1>
           <p className="text-sm text-muted-foreground">Member Portal</p>
         </div>

@@ -24,8 +24,7 @@ export default function AppShell() {
       <header className="sticky top-0 z-50 border-b border-border bg-carbon/80 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
           <NavLink to="/" className="flex items-center gap-2">
-            <Dumbbell className="w-6 h-6 text-ember" />
-            <span className="font-bold text-lg tracking-tight text-chalk">IDFC</span>
+            <img src="/idfc-first-bank-logo.svg" alt="IDFC First Bank Logo" className="h-8" />
           </NavLink>
 
           {/* Desktop nav */}
